@@ -22,6 +22,7 @@
     border-bottom: 1px solid black;
     background-color: rgb(253, 187, 0);
     font-family: 'Simply Rounded';
+    box-shadow: 0px 0px 2px black;
 }
 
 
@@ -37,6 +38,7 @@
 
 .nav a:hover{
     color: white;
+    cursor: pointer;
     background-color: black;
 }
 
@@ -117,6 +119,7 @@ body {
 }
 
 input[type=text], input[type=password] {
+    font-family: 'Simply Rounded';
     border-radius: 10px;
     width: 100%;
     height: 30px;
@@ -150,22 +153,44 @@ input[type=text]:focus, input[type=password]:focus {
 
 /*Styling for joke creation form */
 
-.joke-form-container {
-    font-family: 'Simply Rounded';
-    font-size: 36px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
 .joke-form-box {
-    margin: 30px auto;
-    width: 30%;
+    font-family: 'Simply Rounded';
+    font-size: 24px;
+    margin-top: 90px;
+    width: 100%;
     background-color: #FDBB00;
     border: 1px solid black;
     padding: 20px;
-    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    box-shadow: 0px 0px 1px black;
+}
+
+.joke-form-header{
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-size:
+}
+
+#setup, #punchline {
+    outline: 0;
+    border-width: 0 0 2px;
+    font-size: 17px;
+    border-color: black;
+    background-color: transparent;
+    border-radius: 0px;
+    width: 95%;
+    display: block;
+}
+
+#setup {
+    margin-bottom: 15px;
+}
+
+#post-joke {
+    width: 30px;
+    height: 30px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 40px;
 }

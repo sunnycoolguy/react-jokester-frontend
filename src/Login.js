@@ -56,20 +56,7 @@ class Login extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
-        if(this.state.mode === 'login'){
-        } else {
-            fetch('http://localhost:4001', {
-                method : 'POST',
-                headers: {'Content-type' : 'application/json'},
-                body: JSON.stringify({username : this.state.username, password : this.state.password, memo : this.state.memo})
-            })
-            .then(console.log('Successful response!'));
-        }
-        this.props.history.push(`/${this.state.username}`,
-        {
-            password: this.state.password,
-            mode : this.state.mode,
-        });
+        this.props.history.push('/jokes');
     }
 
     render(){
