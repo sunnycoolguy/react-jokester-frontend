@@ -10,7 +10,7 @@ class App extends React.Component{
     return (
       <Router>
         <Route path='/' exact component={Login}/>
-        <Route path='/jokes' exact  component={Jokester}/>
+        <Route path='/jokes' component={Jokester}/>
       </Router>
     );
   }

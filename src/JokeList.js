@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from './NavBar.js';
+
 const JokeList = () => {
     return (
         <div className='main'>
