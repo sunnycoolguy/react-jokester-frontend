@@ -1,15 +1,14 @@
 import React from 'react';
 
-
 class Login extends React.Component{
 
-    constructor(props){
+    constructor(props, context){
         super(props);
         this.state = {
             mode: 'login',
             username : '',
             password: '',
-            memo : ''
+            signUpError: ''
         };
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
@@ -30,18 +29,11 @@ class Login extends React.Component{
         })
     }
 
-    handleMemoChange(event){
-        this.setState({
-            memo : event.target.value
-        })
-    }
-
     handleLoginClick(event){
         this.setState({
             mode: 'login',
             username : '',
             password: '',
-            memo : ''
         });
     }
 
@@ -50,14 +42,38 @@ class Login extends React.Component{
             mode:'sign-up',
             username : '',
             password: '',
-            memo : ''
         });
     }
 
     handleSubmit(event){
         event.preventDefault();
-        this.props.history.push('/jokes');
+            
+        if(this.state.mode === 'login'){
+        } else {
+            fetch('http://localhost:4001/users', {
+                method : 'POST',
+                headers: {'Content-type' : 'application/json'},
+                body: JSON.stringify({username : this.state.username, password : this.state.password})
+            })
+            .then((response) => {
+                if(!response.ok){
+                    throw Error();
+                }
+                return response
+            })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data.currentUser);
+                this.props.onLogin(data.currentUser);
+                this.props.history.push('/jokes');
+            },
+            (error) => {
+                this.setState({signUpError: 'That username already exists'})
+            });
+        }
     }
+
+    
 
     render(){
         return (
@@ -75,6 +91,7 @@ class Login extends React.Component{
                         <input required type='password' id='password' name='password' value={this.state.password} onChange={this.handlePasswordChange}/>
                         <input type='submit' value={this.state.mode === 'login' ? 'Log In' : 'Sign Up'}/>
                     </form>
+                    <div style={{display: this.state.signUpError ? 'block' : 'none'}}>That username already exists!</div>
                 </div> 
             </div>
         );

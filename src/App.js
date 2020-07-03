@@ -1,16 +1,35 @@
 import React from 'react';
-import JokeList from './JokeList.js';
-import NavBar from './NavBar.js';
 import Login from './Login.js';
 import Jokester from './Jokester.js';
-import JokeForm from './JokeForm.js'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      currentUser: ''
+    }
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  handleLogin(currentUser){
+    this.setState({
+      currentUser
+    });
+  }
+
+  handleSignOut(){
+    this.setState({
+      currentUser : ''
+    })
+  }
+
   render(){
     return (
       <Router>
-        <Route path='/' exact component={Login}/>
-        <Route path='/jokes' component={Jokester}/>
+        <Route path='/' exact render={(props) => <Login {...props} onLogin={this.handleLogin} currentUser={this.state.currentUser}/>}/>
+        <Route path='/jokes' render={(props) => <Jokester {...props} onSignOut={this.handleSignOut} currentUser={this.state.currentUser}/>}/>
       </Router>
     );
   }

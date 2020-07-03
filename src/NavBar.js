@@ -5,10 +5,10 @@ import {Link} from 'react-router-dom';
 const NavBar = (props) => {
     return (
         <div className='nav'>
-            <Link to={`${props.match.url}`}>
-                    JOKESTER
+            <Link id='title' to={`${props.match.url}`}>
+                JOKESTER
             </Link>
-            <Link to={'/'}>
+            <Link to={'/'} onClick={props.onSignOut}>
                 Sign Out
             </Link>
             <Link to={`${props.match.url}/write-a-joke`}>
