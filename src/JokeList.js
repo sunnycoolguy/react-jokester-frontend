@@ -1,6 +1,6 @@
 import React from 'react';
 import JokeCard from './JokeCard.js';
-import { isCompositeComponent } from 'react-dom/test-utils';
+
 
 class JokeList extends React.Component {
     
