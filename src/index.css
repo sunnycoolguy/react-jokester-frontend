@@ -51,6 +51,7 @@ body {
     background-color: #ffb100;
 }
 
+/*
 .first{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -62,7 +63,7 @@ body {
     border-bottom-right-radius: 5px;
     border-bottom: 1px solid black;
 }
-
+*/
 .master-card {
     box-shadow: -2px 0px 5px -0.5px rgba(0, 0, 0, 0.2), 2px 0px 5px -0.5px rgba(0, 0, 0, 0.2);
     border-top: 1px solid black;
