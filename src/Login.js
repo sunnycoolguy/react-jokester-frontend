@@ -8,7 +8,7 @@ class Login extends React.Component{
             mode: 'login',
             username : '',
             password: '',
-            signUpError: ''
+            error: ''
         };
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
@@ -49,6 +49,28 @@ class Login extends React.Component{
         event.preventDefault();
             
         if(this.state.mode === 'login'){
+            fetch(`http://localhost:4001/${this.state.username}`, {
+                method : 'POST',
+                headers: {'Content-type' : 'application/json'},
+                body: JSON.stringify({password : this.state.password})
+            })
+            .then((response) => {
+                if(!response.ok){
+                    throw Error();
+                }
+                return response
+            })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data.currentUser);
+                this.props.onLogin(data.currentUser);
+                this.props.history.push('/jokes');
+            },
+            (error) => {
+                console.log(error);
+                this.setState({error: 'Invalid username or password'});
+            });
+
         } else {
             fetch('http://localhost:4001/users', {
                 method : 'POST',
@@ -68,7 +90,7 @@ class Login extends React.Component{
                 this.props.history.push('/jokes');
             },
             (error) => {
-                this.setState({signUpError: 'That username already exists'})
+                this.setState({error: 'That username already exists'})
             });
         }
     }
@@ -91,7 +113,7 @@ class Login extends React.Component{
                         <input required type='password' id='password' name='password' value={this.state.password} onChange={this.handlePasswordChange}/>
                         <input type='submit' value={this.state.mode === 'login' ? 'Log In' : 'Sign Up'}/>
                     </form>
-                    <div style={{display: this.state.signUpError ? 'block' : 'none'}}>That username already exists!</div>
+                    <div style={{display: this.state.error ? 'block' : 'none'}}>{this.state.error}</div>
                 </div> 
             </div>
         );
