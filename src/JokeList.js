@@ -11,6 +11,7 @@ const JokeList = () => {
               <div>43</div>
             </div>
             <div className='joke'>
+              <p>Posted by: ___</p>
               <p>Setup : ________</p>
               <p>Punchline: _______</p>
             </div>
