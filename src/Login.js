@@ -34,6 +34,7 @@ class Login extends React.Component{
             mode: 'login',
             username : '',
             password: '',
+            error: ''
         });
     }
 
@@ -42,12 +43,12 @@ class Login extends React.Component{
             mode:'sign-up',
             username : '',
             password: '',
+            error : ''
         });
     }
 
     handleSubmit(event){
-        event.preventDefault();
-            
+        event.preventDefault();           
         if(this.state.mode === 'login'){
             fetch(`http://localhost:4001/${this.state.username}`, {
                 method : 'POST',
@@ -62,7 +63,6 @@ class Login extends React.Component{
             })
             .then(response => response.json())
             .then((data) => {
-                console.log(data.currentUser);
                 this.props.onLogin(data.currentUser);
                 this.props.history.push('/jokes');
             },
@@ -85,7 +85,6 @@ class Login extends React.Component{
             })
             .then(response => response.json())
             .then((data) => {
-                console.log(data.currentUser);
                 this.props.onLogin(data.currentUser);
                 this.props.history.push('/jokes');
             },
