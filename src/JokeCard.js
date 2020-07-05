@@ -3,7 +3,7 @@ import React from 'react';
 class JokeCard extends React.Component {
     render(){
         return (
-            <div className='master-card'>
+            <div className={`master-card ${this.props.isFirst ? 'first' : ''}${this.props.isLast ? 'last' : ''}`}>
                 <div className='joke-stats'>
                 <div>1230</div>
                 <div id='hah'>HAH!</div>
