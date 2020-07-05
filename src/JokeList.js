@@ -24,7 +24,7 @@ class JokeList extends React.Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost/4001/jokes')
+    fetch('http://localhost:4001/jokes')
     .then((response) => response.json())
     .then((data) => {
       this.setState({
