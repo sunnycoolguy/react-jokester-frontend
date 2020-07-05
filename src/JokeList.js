@@ -15,8 +15,14 @@ class JokeList extends React.Component {
   render() {
       return (
         <div className='main'>
-          {this.state.jokes.map((joke) => {
-            return <JokeCard username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+          {this.state.jokes.map((joke, index) => {
+            if(index === 0){
+              return <JokeCard key={joke['_id']} isFirst={true} isLast={false} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+            }
+            if(index === this.state.jokes.length - 1){
+              return <JokeCard key={joke['_id']} isFirst={false} isLast={true} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+            }
+            return <JokeCard key={joke['_id']} isFirst={false} isLast={false} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
           })}
           <div style={{display:this.state.message ? 'block' : 'none'}}>{this.state.message}</div> 
         </div>
