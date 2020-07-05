@@ -42,7 +42,11 @@ class JokeForm extends React.Component {
             return response
         })
         .then((data) => {
-            this.setState({ message : 'Successfully posted your joke!'})
+            this.setState({
+                message : 'Successfully posted your joke!',
+                setup : '',
+                punchline: ''
+            });
         })
         .catch((error) => {
             console.log(error);
