@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class JokeCard extends React.Component {
     render(){
         return (
-            <div className={`master-card ${this.props.isFirst ? 'first' : ''}${this.props.isLast ? 'last' : ''}`}>
+            <div className={`master-card ${this.props.isFirst ? 'first' : ''} ${this.props.isLast ? 'last' : ''}`}>
                 <div className='joke-stats'>
                 <div>1230</div>
                 <div id='hah'>HAH!</div>
@@ -11,7 +12,9 @@ class JokeCard extends React.Component {
                 <div>43</div>
                 </div>
                 <div className='joke'>
-                    <p>{`Posted by: ${this.props.username}` }</p>
+                    <div>
+                        <span>Posted by: </span> <Link to={`/jokes/${this.props.username}`}>{`${this.props.username}`}</Link>
+                    </div>
                     <p>{`Setup : ${this.props.setup}` }</p>
                     <p>{`Punchline: ${this.props.punchline}` }</p>
                 </div>

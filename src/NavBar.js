@@ -14,6 +14,9 @@ const NavBar = (props) => {
             <Link to={`${props.match.url}/write-a-joke`}>
                 Write a Joke
             </Link>
+            <Link to={`${props.match.url}/${props.currentUser}`}>
+                My Jokes
+            </Link>
             <Link to={`${props.match.url}`}>
                 All Jokes
             </Link>

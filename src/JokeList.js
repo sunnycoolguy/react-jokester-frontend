@@ -8,21 +8,22 @@ class JokeList extends React.Component {
     super(props);
     this.state = {
       jokes : [],
-      message : 'Loading...'
+      message : 'Loading...',
     }
   }
   
   render() {
       return (
         <div className='main'>
+          <div style={{display : this.props.match.params.username ? 'block' : 'none'}}>{`${this.props.match.params.username}'s jokes:`}</div>
           {this.state.jokes.map((joke, index) => {
             if(index === 0){
-              return <JokeCard key={joke['_id']} isFirst={true} isLast={false} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+              return <JokeCard match={this.props.match} key={joke['_id']} isFirst={true} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
             }
             if(index === this.state.jokes.length - 1){
-              return <JokeCard key={joke['_id']} isFirst={false} isLast={true} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+              return <JokeCard match={this.props.match} key={joke['_id']} isLast={true} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
             }
-            return <JokeCard key={joke['_id']} isFirst={false} isLast={false} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
+            return <JokeCard match={this.props.match} key={joke['_id']} username={joke.username} setup={joke.setup} punchline={joke.punchline}/>
           })}
           <div style={{display:this.state.message ? 'block' : 'none'}}>{this.state.message}</div> 
         </div>
@@ -45,6 +46,8 @@ class JokeList extends React.Component {
       })
     });
   }
+
 }
+
 
 export default JokeList;
