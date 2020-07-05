@@ -12,7 +12,7 @@ class JokeCard extends React.Component {
                 <div>43</div>
                 </div>
                 <div className='joke'>
-                    <div>
+                    <div style={{marginTop : '10px'}}>
                         <span>Posted by: </span> <Link to={`/jokes/${this.props.username}`}>{`${this.props.username}`}</Link>
                     </div>
                     <p>{`Setup : ${this.props.setup}` }</p>
