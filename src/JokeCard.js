@@ -2,13 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class JokeCard extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            vote : ''
-        }
-    }
-
 
     render(){
         return (
@@ -21,7 +14,7 @@ class JokeCard extends React.Component {
                     <p className='punchline'>{`Punchline: ${this.props.punchline}` }</p>
                     <div className='joke-actions'>
                         {this.props.isCurrentUserJoke ? <Link className='edit-button' to={`/jokes/edit-a-joke/${this.props.id}`}>Edit</Link> : null}
-                        {this.props.isCurrentUserJoke ? <Link className='delete-button'>Delete</Link> : null}
+                        {this.props.isCurrentUserJoke ? <Link className='delete-button' onClick={this.props.onDelete} to={`/jokes/${this.props.username}`}>Delete</Link> : null}
                     </div>
                 </div>
             </div>
