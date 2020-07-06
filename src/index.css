@@ -15,23 +15,6 @@
     float: left;
 }
 
-.hah, .nah {
-    transition: 0.2s;
-    border-radius: 7px;
-}
-
-.hah:hover, .nah:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-
-.voted {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-
 .nav {
     position: fixed;
     top: 0;
@@ -44,18 +27,22 @@
 }
 
 
+
+a {
+    color: black;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
 .nav a {
     display: block;
     float: right;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: 0.2s;
+    padding: 14px 16px;    
     height: 30px;
-    color: black;
 }
 
-.nav a:hover{
+a:hover{
     color: white;
     cursor: pointer;
     background-color: black;
@@ -69,7 +56,7 @@ body {
     background-color: #ffb100;
 }
 
-
+/*Styling for joke cards*/
 .first{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -94,6 +81,7 @@ body {
     flex-direction: row;
     font-family: 'Simply Rounded';
     background-color: rgb(253, 187, 0);
+    padding: 10px;
 }
 
 .joke {
@@ -106,8 +94,16 @@ body {
     text-align: center;
 }
 
-#nah {
-    margin-top : 10px;
+.punchline {
+    margin-bottom: 10px;
+}
+.poster {
+    margin-top: 10px;
+}
+
+.poster a {
+    border-radius: 5px;
+    padding: 3px;
 }
 
 /* Styling for login/sign-up form */
@@ -212,4 +208,20 @@ input[type=text]:focus, input[type=password]:focus {
     margin: 10px auto;
     display: block;
     border-radius: 40px;
+}
+
+/*Style edit and delete buttons*/
+
+.delete-button {
+    margin-left: 20px;
+}
+
+.edit-button, .delete-button {
+    margin-top: 1px;
+    padding: 5px 5px;
+    border-radius : 5px;
+}
+
+.edit-button {
+    margin-left: 0px;
 }
