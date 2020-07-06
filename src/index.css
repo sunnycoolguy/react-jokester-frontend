@@ -15,6 +15,23 @@
     float: left;
 }
 
+.hah, .nah {
+    transition: 0.2s;
+    border-radius: 7px;
+}
+
+.hah:hover, .nah:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.voted {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
 .nav {
     position: fixed;
     top: 0;
