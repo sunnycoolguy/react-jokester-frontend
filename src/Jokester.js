@@ -4,6 +4,7 @@ import JokeList from './JokeList.js';
 import JokeForm from './JokeForm.js';
 import {Switch, Route} from 'react-router-dom';
 import JokeListSingle from './JokeListSingle.js';
+import EditJoke from './EditJoke.js';
 
 class Jokester extends React.Component {
     render(){
@@ -14,6 +15,7 @@ class Jokester extends React.Component {
                     <Switch>
                         <Route path={`${this.props.match.path}`} exact render={(props) => <JokeList {...props} currentUser={this.props.currentUser}/>}/>
                         <Route path={`${this.props.match.path}/write-a-joke`} exact render={(props) => <JokeForm {...props} currentUser={this.props.currentUser}/>}/>
+                        <Route path={`${this.props.match.path}/edit-a-joke/:id`} exact render={(props) => <EditJoke {...props} currentUser={this.props.currentUser}/>}/>
                         <Route path={`${this.props.match.path}/:username`} exact render={(props) => <JokeListSingle {...props} currentUser={this.props.currentUser}/>}/>
                     </Switch>
                 </div>
